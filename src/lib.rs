@@ -5,15 +5,16 @@
 // PROPRIETARY AND CONFIDENTIAL
 //
 
-extern crate byteorder;
-extern crate common;
-extern crate cpu_cycle_counter;
-extern crate libc;
+
 #[macro_use]
 extern crate log;
 
-extern crate time;
+extern crate prctl;
 
+#[macro_use]
+extern crate serde_derive;
+extern crate serde;
+extern crate serde_json;
 
 use std::error::Error;
 use std::io::{self, Write};
@@ -35,6 +36,7 @@ pub enum StitcherError {
 #[allow(unused_variables)]
 pub fn run(config: &Config) -> Result<(), StitcherError> {
     name_thread!("stit:main_loop");
+    Ok(())
     // let mut pfring = try!(PFRingZC::new(config));
     // pfring.run()
 }

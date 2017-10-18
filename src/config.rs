@@ -5,30 +5,7 @@
 // PROPRIETARY AND CONFIDENTIAL
 //
 
-use common::util::log;
 
-
-
-#[derive(Debug, Clone, RustcDecodable)]
-pub struct Log {
-    pub update_freq: Option<u64>,
-    pub app: Option<log::AppLogConfig>,
-}
-
-impl Log {
-    pub fn update_freq(&self) -> u64 {
-        self.update_freq.unwrap_or(1000)
-    }
-}
-
-impl Default for Log {
-    fn default() -> Log {
-        Log {
-            update_freq: None,
-            app: None,
-        }
-    }
-}
 
 #[derive(Serialize, Deserialize)]
 pub struct ConfigThreads {
