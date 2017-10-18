@@ -1,0 +1,42 @@
+
+[package]
+name = "ironstitcher"
+version = "0.0.1"
+repository = "https://github.com/eddiechristian/stitcher-rs"
+
+[features]
+# When specified, includes benchmarking code in binary file.
+benchmark = []
+# When specified, "non-production-hardware" suppresses cpu scheduling.
+non-production-hardware = ["non-production-hardware"]
+
+[lib]
+name = "ironstitcher"
+
+[dependencies.cpu_cycle_counter]
+git = "ssh://git@github.com/IronNetCybersecurity/rust-deps"
+rev = "67b78259ff44142e20640d2ed4c3da3254df533d"
+
+[dependencies]
+byteorder = "0.3.9"
+fnv = "1.0.2"
+getopts = "0.2.10"
+libc = { version = "0.2", default-features = false }
+log = { version = "0.3.1", features = ["release_max_level_info"] }
+num = "0.1.25"
+rustc-serialize = "0.3.14"
+sc_detect = { path = "libs/sc_detect" }
+time = "0.1.25"
+uuid = "0.1.17"
+
+[dev-dependencies]
+env_logger = "0.3.1"
+lazy_static = "0.1.14"
+
+# See http://doc.crates.io/manifest.html#the-profile-sections for
+# possible profile settings.
+[profile.release]
+debug = true
+# Punt on "coredumps for rust panics."
+# Libraries have to also be compiled to abort.
+#panic = 'abort'
